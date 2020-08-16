@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Tomato";
+}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <p>Секундомер/таймер</p>
+                <p>Записать свое время</p>
+            </div>
+            <div class="col-sm">
+                <h1>Таймер</h1>
+                <p></p>
+                <h3 id="countdown"></h3>
+                <button onclick="setTime()">Запустить таймер</button>
+            </div>
+            <div class="col-sm">
+                Здесь будут пресеты
+            </div>
+        </div>
+    </div>
+<script>
+    var time = 0;
+
+    const countDownEL = document.getElementById('countdown');
+    setInterval(updateCountdown, 1000);
+
+    function updateCountdown() {
+        if (time > 0) {
+            var hours = Math.floor(time / 60 / 60);
+            var minutes = Math.floor(time / 60) % 60;
+            var seconds = time % 60;
+
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            hours < 1 ? countDownEL.innerHTML = minutes + ' : ' + seconds : countDownEL.innerHTML = hours + ' : ' + minutes + ' : ' + seconds;
+            time--;
+        }
+        else {
+            countDownEL.innerHTML = '00 : 00 : 00';
+        }
+    }
+
+    function setTime() { 'установка времени'};
+</script>
